@@ -1,0 +1,19 @@
+{
+    "name": "amazontag",
+    "description": "add your amazon affiliate tag automatically to amazon's links posted by users",
+    "version": "0.1",
+    "hasLocale": false,
+    "license": "GNU GPL2",
+    "key": "amazontag",
+    "type": "addon",
+    "authors": [
+        {
+            "name": "Julien DARRIBAU",
+            "homepage": "https://routeur4g.fr"
+        }
+    ],
+    "require": {
+        "vanilla": ">=2.5"
+    },
+	"icon": "example.png"
+}
