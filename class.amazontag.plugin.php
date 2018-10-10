@@ -1,29 +1,22 @@
 <?php
 /**
- * An example plugin.
+ * Amazontag plugin.
  *
- * @copyright 2008-2014 Vanilla Forums, Inc.
+ * @copyright 2018 Julien DARRIBAU
  * @license GNU GPLv2
  */
 
 /**
- * Class ExamplePlugin
+ * Class AmazontagPlugin
  *
- * This plugin excerpt every discussion/announcement body
- * before adding it under their title in the discussions list.
+ * This plugin add/replace amazon tag in every user's post
  *
- * @see http://docs.vanillaforums.com/developers/plugins
- * @see http://docs.vanillaforums.com/developers/plugins/quickstart
+ *
+ * @see https://github.com/pioc92/amazontag
  */
 class AmazontagPlugin extends Gdn_Plugin {
 
-    /**
-     * Plugin constructor
-     *
-     * This fires once per page load, during execution of bootstrap.php. It is a decent place to perform
-     * one-time-per-page setup of the plugin object. Be careful not to put anything too strenuous in here
-     * as it runs every page load and could slow down your forum.
-     */
+
     public function __construct() {
 
     }
@@ -38,11 +31,12 @@ class AmazontagPlugin extends Gdn_Plugin {
             $links = $dom->getElementsByTagName('a');
 
             foreach ($links as $link){
-                //Extract and show the "href" attribute.
+                //Extract the "href" attribute.
 
                 $url =  $link->getAttribute('href');
                 $url2 = $link->getAttribute('href');
 
+                //check the url's domain you can replace by amazon.com or other amazon's country site
                  $checkdomain = 'amazon.fr';
 
 
@@ -52,14 +46,14 @@ class AmazontagPlugin extends Gdn_Plugin {
 
                     if (parse_url($url, PHP_URL_QUERY)){ //check if link has query string
                         if (strpos($url, $affstring) !== false) { //check if link already has affiliate ID
-                        $url = preg_replace("/(".$affstring.").*?(\z|&)/", "$1".$afftag."$2", $url);
+                        $url = preg_replace("/(".$affstring.").*?(\z|&)/", "$1".$afftag."$2", $url); //Replace affiliate id by yours in the url
 
                         }else{
-                            $url = $url.'&'.$affstring.$afftag;
+                            $url = $url.'&'.$affstring.$afftag; //add affiliate tag to the url
                         }
                     }
                     else{
-                        $url = $url.'?'.$affstring.$afftag;
+                        $url = $url.'?'.$affstring.$afftag; // add affiliate tag with ? operator in the url
                     }
                     $url2 = str_replace('&','&amp;',$url2);
                     //var_dump($args['Mixed']);
