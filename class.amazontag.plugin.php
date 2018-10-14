@@ -58,7 +58,7 @@ class AmazontagPlugin extends Gdn_Plugin {
                     }
                     //$url2 = str_replace('&','&amp;',$url2);
                     //var_dump($args['Mixed']);
-                    if($ancre === $url2){ //check if anchor is like url
+                    if($anchor === $url2){ //check if anchor is like url
                     $args['Mixed'] = str_replace('<a href="'.$url2.'" rel="nofollow">','<a href="'.$url.'" target="_blank" rel="nofollow">',$args['Mixed']);
 
                     }
