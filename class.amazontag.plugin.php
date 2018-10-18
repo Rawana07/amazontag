@@ -35,7 +35,7 @@ class AmazontagPlugin extends Gdn_Plugin {
 
                 $url =  $link->getAttribute('href');
                 $url2 = $link->getAttribute('href');
-                $anchor = $link->nodeValue;
+
 
                 //check the url's domain you can replace by amazon.com or other amazon's country site
                  $checkdomain = 'amazon.fr';
@@ -54,29 +54,18 @@ class AmazontagPlugin extends Gdn_Plugin {
                         }
                     }
                     else{
+
                         $url = $url.'?'.$affstring.$afftag; // add affiliate tag with ? operator in the url
                     }
-                    //$url2 = str_replace('&','&amp;',$url2);
-                    //var_dump($args['Mixed']);
-                    if($anchor === $url2){ //check if anchor is like url
-                    $args['Mixed'] = str_replace('<a href="'.$url2.'" rel="nofollow">','<a href="'.$url.'" target="_blank" rel="nofollow">',$args['Mixed']);
+                    if ((strpos($args['Mixed'], '&amp;') !== false)&&(!strpos($url2, '&amp;') !== false)) { //check if & are encoded
+                        $url2 = str_replace('&','&amp;',$url2);
+                        }
 
-                    }
-                    else
-                    {
-                        $args['Mixed'] = str_replace('<a rel="nofollow" href="'.$url2.'">','<a href="'.$url.'" target="_blank" rel="nofollow">',$args['Mixed']);
-                    }
-
-
+                    $args['Mixed'] = str_replace('href="'.$url2.'"','href="'.$url.'"',$args['Mixed']);
                 }
 
-
-
         }
 
-}
-
-
-        }
     }
-
+}
+}
