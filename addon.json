@@ -4,6 +4,7 @@
     "version": "0.1",
     "hasLocale": false,
     "license": "GNU GPL2",
+    "documentationUrl" : "",
     "key": "amazontag",
     "type": "addon",
     "authors": [
