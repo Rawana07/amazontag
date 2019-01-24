@@ -4,17 +4,17 @@
     "version": "0.1",
     "hasLocale": false,
     "license": "GNU GPL2",
-    "documentationUrl" : "",
     "key": "amazontag",
     "type": "addon",
+    "documentationUrl" : "",
     "authors": [
         {
             "name": "Julien DARRIBAU",
-            "homepage": "https://routeur4g.fr"
+            "homepage": "https://routeur4g.fr/discussions"
         }
     ],
     "require": {
         "vanilla": ">=2.5"
     },
-	"icon": "example.png"
+	"icon": "amazontag.png"
 }
