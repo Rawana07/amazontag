@@ -9,7 +9,7 @@
 /**
  * Class AmazontagPlugin
  *
- * This plugin add/replace amazon tag in every user's post
+ * This plugin add/replace amazon tag in every amazon's user post
  *
  *
  * @see https://github.com/pioc92/amazontag
@@ -31,15 +31,11 @@ class AmazontagPlugin extends Gdn_Plugin {
             $links = $dom->getElementsByTagName('a');
 
             foreach ($links as $link){
-                //Extract the "href" attribute.
+                //Extract and show the "href" attribute.
 
                 $url =  $link->getAttribute('href');
-                $url2 = $link->getAttribute('href');
 
-
-                //check the url's domain you can replace by amazon.com or other amazon's country site
-                 $checkdomain = 'amazon.fr';
-
+                 $checkdomain = 'amazon.fr'; //your amazon associates website
 
                 if (!empty($url) && strpos($url, $checkdomain) !== false){
                     $afftag = 'YOUR AFFILIATE TAG'; //our affiliate ID
@@ -47,25 +43,18 @@ class AmazontagPlugin extends Gdn_Plugin {
 
                     if (parse_url($url, PHP_URL_QUERY)){ //check if link has query string
                         if (strpos($url, $affstring) !== false) { //check if link already has affiliate ID
-                        $url = preg_replace("/(".$affstring.").*?(\z|&)/", "$1".$afftag."$2", $url); //Replace affiliate id by yours in the url
+                        $url = preg_replace("/(".$affstring.").*?(\z|&)/", "$1".$afftag."$2", $url);
 
-                        }else{
-                            $url = $url.'&'.$affstring.$afftag; //add affiliate tag to the url
+                        }else{ //no affiliate tag so we add our
+                            $url = $url.'&'.$affstring.$afftag;
                         }
                     }
-                    else{
+                    else{ //no query string so we add a query string with our tag at the end of the url
 
-                        $url = $url.'?'.$affstring.$afftag; // add affiliate tag with ? operator in the url
+                        $url = $url.'?'.$affstring.$afftag;
                     }
-                    if ((strpos($args['Mixed'], '&amp;') !== false)&&(!strpos($url2, '&amp;') !== false)) { //check if & are encoded
-                        $url2 = str_replace('&','&amp;',$url2);
-                        }
-
-                    $args['Mixed'] = str_replace('href="'.$url2.'"','href="'.$url.'"',$args['Mixed']);
                 }
-
+            }
         }
-
     }
-}
 }
