@@ -15,13 +15,9 @@
  * @see https://github.com/pioc92/amazontag
  */
 class AmazontagPlugin extends Gdn_Plugin {
-
-
     public function __construct() {
 
     }
-
-
     public function format_links_handler($sender, $args) {
 
         if(isset($args['Mixed'])){
@@ -29,14 +25,10 @@ class AmazontagPlugin extends Gdn_Plugin {
             $dom = new DOMDocument;
             @$dom->loadHTML($args['Mixed']);
             $links = $dom->getElementsByTagName('a');
-
             foreach ($links as $link){
                 //Extract and show the "href" attribute.
-
                 $url =  $link->getAttribute('href');
-
                  $checkdomain = 'amazon.fr'; //your amazon associates website
-
                 if (!empty($url) && strpos($url, $checkdomain) !== false){
                     $afftag = 'YOUR AFFILIATE TAG'; //our affiliate ID
                     $affstring = 'tag='; // url parameter for affiliate ID
