@@ -28,6 +28,7 @@ class AmazontagPlugin extends Gdn_Plugin {
             foreach ($links as $link){
                 //Extract and show the "href" attribute.
                 $url =  $link->getAttribute('href');
+                $url2 = $link->getAttribute('href');
                  $checkdomain = 'amazon.fr'; //your amazon associates website
                 if (!empty($url) && strpos($url, $checkdomain) !== false){
                     $afftag = 'YOUR AFFILIATE TAG'; //our affiliate ID
@@ -45,6 +46,10 @@ class AmazontagPlugin extends Gdn_Plugin {
 
                         $url = $url.'?'.$affstring.$afftag;
                     }
+                    if ((strpos($args['Mixed'], '&amp;') !== false)&&(!strpos($url2, '&amp;') !== false)) {
+                        $url2 = str_replace('&','&amp;',$url2);
+                    }
+                    $args['Mixed'] = str_replace('href="'.$url2.'"','href="'.$url.'"',$args['Mixed']);//replace old url by the tagged one in the $args
                 }
             }
         }
