@@ -1,7 +1,7 @@
 {
     "name": "amazontag",
     "description": "add your amazon affiliate tag automatically to amazon's links posted by users",
-    "version": "0.1",
+    "version": "0.2",
     "hasLocale": false,
     "license": "GNU GPL2",
     "key": "amazontag",
