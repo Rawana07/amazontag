@@ -61,7 +61,7 @@ class AmazontagPlugin extends Gdn_Plugin {
         }
     }
     ///
-    /// https://gist.github.com/davejamesmiller/dbefa0ff167cc5c08d6d code to find redirected url
+    /// https://gist.github.com/davejamesmiller/dbefa0ff167cc5c08d6d code to get HTTP redirect destination for a URL in PHP 
     ///
     public function get_redirect_target($url) //function to find redirected url
     {
