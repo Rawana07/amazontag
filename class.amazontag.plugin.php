@@ -56,7 +56,7 @@ class AmazontagPlugin extends Gdn_Plugin {
                         $url2 = str_replace('&','&amp;',$url2);
                     }
                     $args['Mixed'] = str_replace('href="'.$url2.'"','href="'.$url.'"',$args['Mixed']);//replace old url by the tagged one in the $args
-                    $args['Mixed'] = str_replace('rel="nofollow"','rel="nofollow sponsored"',$args['Mixed']);//replace rel="nofollow" by rel="nofollow sponsored" for google 
+                    $args['Mixed'] = str_replace('rel="nofollow"','rel="sponsored"',$args['Mixed']);//replace rel="nofollow" by rel="nofollow sponsored" for google 
 
                 }
             }
