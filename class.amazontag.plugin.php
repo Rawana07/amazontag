@@ -29,7 +29,7 @@ class AmazontagPlugin extends Gdn_Plugin {
                 //Extract and show the "href" attribute.
                 $url =  $link->getAttribute('href');
                 $url2 = $link->getAttribute('href');
-                $checkdomain = 'amazon.fr'; //your amazon associates website to modify if you're not french!
+                $checkdomain = 'amazon.in'; //your amazon associates website to modify if you're not french!
                 if (!empty($url) && strpos($url, 'https://amzn.to') !== false){ //if link is an amazon https shortcut url, we find the final's amazon url (ex https://amzn.to/slfdol -> https://www.amazon.com/product/tag=example21)
                     $url = $this->get_redirect_target($url); 
                 }
@@ -37,7 +37,7 @@ class AmazontagPlugin extends Gdn_Plugin {
                     $url = $this->get_redirect_final_target($url); 
                 }
                 if (!empty($url) && strpos($url, $checkdomain) !== false){
-                    $afftag = 'YOUR AFFILIATE TAG'; //your affiliate ID to modify
+                    $afftag = 'jaysoftshine-21'; //your affiliate ID to modify
                     $affstring = 'tag='; // url parameter for affiliate ID
 
                     if (parse_url($url, PHP_URL_QUERY)){ //check if link has query string
